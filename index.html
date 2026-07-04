@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>readHD Legal Center - Terms, Privacy, EULA & Deletion</title>
+    <meta name="description" content="Official legal documentation, Terms of Service, Privacy Policy, EULA, and Account Deletion procedures for readHD mobile application.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --surface-color: #161616;
+            --surface-hover: #222222;
+            --border-color: #2d2d2d;
+            --accent-green: #90d883;
+            --accent-hover: #b4ecaa;
+            --accent-red: #ff8a80;
+            --accent-red-hover: #ffab91;
+            --text-primary: #ffffff;
+            --text-secondary: #a3a3a3;
+            --text-muted: #666666;
+            --font-family: 'Lexend', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --transition-speed: 0.25s;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Background grid overlay */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 24px 24px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            width: 100%;
+            margin: 40px auto 20px;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .logo-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            border: 2px solid var(--accent-green);
+            background: linear-gradient(135deg, rgba(144, 216, 131, 0.2), transparent);
+            position: relative;
+        }
+
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            background: var(--accent-green);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+        }
+
+        h1 span {
+            color: var(--accent-green);
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 4px;
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto 60px;
+            padding: 0 24px;
+            flex: 1;
+        }
+
+        /* Glassmorphic Tabs bar */
+        .tabs-container {
+            background-color: rgba(22, 22, 22, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+            border-bottom: none;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-family: var(--font-family);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 16px 24px;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .tab-btn.active {
+            color: var(--accent-green);
+            border-bottom-color: var(--accent-green);
+            background-color: rgba(144, 216, 131, 0.05);
+        }
+
+        .tab-btn#tab-btn-deletion.active {
+            color: var(--accent-red);
+            border-bottom-color: var(--accent-red);
+            background-color: rgba(255, 138, 128, 0.05);
+        }
+
+        /* Content box wrapper */
+        .content-box {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            min-height: 400px;
+        }
+
+        .legal-pane {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .legal-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Legal Content Styling */
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            border-left: 3px solid var(--accent-green);
+            padding-left: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pane-deletion h2 {
+            border-left-color: var(--accent-red);
+        }
+
+        .last-updated {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 28px 0 12px;
+            color: var(--text-primary);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 18px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Warning Banner */
+        .warning-banner {
+            background: linear-gradient(135deg, rgba(255, 138, 128, 0.1), rgba(255, 138, 128, 0.02));
+            border: 1px solid rgba(255, 138, 128, 0.3);
+            padding: 20px;
+            margin-bottom: 24px;
+            border-radius: 0;
+            display: flex;
+            gap: 16px;
+        }
+
+        .warning-icon {
+            color: var(--accent-red);
+            font-size: 1.5rem;
+            font-weight: 700;
+            user-select: none;
+        }
+
+        .warning-text h4 {
+            color: var(--accent-red);
+            font-weight: 700;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .warning-text p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 0;
+        }
+
+        /* Forms & Interactive elements */
+        .deletion-steps {
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .deletion-steps ol {
+            margin-left: 24px;
+        }
+
+        .deletion-steps li {
+            margin-bottom: 12px;
+        }
+
+        .request-form {
+            background-color: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border-color);
+            padding: 32px;
+            margin-top: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-family: var(--font-family);
+            font-size: 0.9rem;
+            padding: 12px 16px;
+            outline: none;
+            transition: border-color var(--transition-speed);
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            border-color: var(--accent-red);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent-red);
+            color: #000000;
+            font-family: var(--font-family);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 16px 32px;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-red-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 30px 24px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: auto;
+            position: relative;
+            z-index: 1;
+            background-color: var(--bg-color);
+        }
+
+        footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+
+        footer a:hover {
+            color: var(--accent-green);
+        }
+
+        /* Mobile Responsive adjustments */
+        @media (max-width: 768px) {
+            header {
+                margin: 24px auto;
+            }
+
+            .content-box {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .tabs-container {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                border-bottom: none;
+                border-left: 2px solid transparent;
+                text-align: left;
+                padding: 14px 20px;
+            }
+
+            .tab-btn.active {
+                border-bottom-color: transparent;
+                border-left-color: var(--accent-green);
+            }
+
+            .tab-btn#tab-btn-deletion.active {
+                border-bottom-color: transparent;
+                border-left-color: var(--accent-red);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grid-overlay"></div>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo-icon"></div>
+            <h1>readHD <span>Legals</span></h1>
+        </div>
+        <p class="subtitle">Official App Agreements & Policies</p>
+    </header>
+
+    <main>
+        <!-- Tabs List Container -->
+        <div class="tabs-container" role="tablist">
+            <button id="tab-btn-terms" class="tab-btn active" role="tab" aria-selected="true" aria-controls="pane-terms" onclick="switchTab('terms')">Terms of Service</button>
+            <button id="tab-btn-privacy" class="tab-btn" role="tab" aria-selected="false" aria-controls="pane-privacy" onclick="switchTab('privacy')">Privacy Policy</button>
+            <button id="tab-btn-eula" class="tab-btn" role="tab" aria-selected="false" aria-controls="pane-eula" onclick="switchTab('eula')">EULA</button>
+            <button id="tab-btn-deletion" class="tab-btn" role="tab" aria-selected="false" aria-controls="pane-deletion" onclick="switchTab('deletion')">Account Deletion</button>
+        </div>
+
+        <!-- Document Views Container -->
+        <div class="content-box">
+            
+            <!-- Terms of Service -->
+            <section id="pane-terms" class="legal-pane active" role="tabpanel" aria-labelledby="tab-btn-terms">
+                <h2>Terms of Service</h2>
+                <div class="last-updated">Last Updated: July 04, 2026</div>
+                
+                <p>Welcome to readHD. By downloading, installing, or using the readHD mobile application ("App"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the App.</p>
+
+                <h3>1. Scope of Services</h3>
+                <p>readHD is a local-first application designed to enhance reading comprehension and focus using visual, cognitive, and sensory aids. The App operates primarily offline and does not maintain central user accounts or cloud storage servers.</p>
+
+                <h3>2. User Content</h3>
+                <p>You are solely responsible for any files, documents, or books you import into the App. You represent and warrant that you own or have the necessary rights and permissions to use, display, and read such content.</p>
+
+                <h3>3. Third-Party Catalog Access</h3>
+                <p>The App provides search and downloading access to Project Gutenberg's catalog. Project Gutenberg is an independent, non-affiliated public domain archive. When using the Free Library discovery feature, you agree to comply with Project Gutenberg's individual license terms and policies.</p>
+
+                <h3>4. Local AI Capabilities</h3>
+                <p>The App provides local AI-powered text summary and flashcard generation. These features are processed entirely on-device via local system API hooks. All AI results are provided on an "as is" basis. readHD does not guarantee the accuracy, completeness, or usefulness of any AI-generated contents.</p>
+
+                <h3>5. Modifications to Terms</h3>
+                <p>We reserve the right to modify these Terms of Service at any time. Your continued use of the App following any changes constitutes your acceptance of the updated terms.</p>
+
+                <h3>6. Contact Information</h3>
+                <p>If you have any questions about these Terms, please contact us at <a href="mailto:support@readhd.app" style="color: var(--accent-green); text-decoration: none;">support@readhd.app</a>.</p>
+            </section>
+
+            <!-- Privacy Policy -->
+            <section id="pane-privacy" class="legal-pane" role="tabpanel" aria-labelledby="tab-btn-privacy">
+                <h2>Privacy Policy</h2>
+                <div class="last-updated">Last Updated: July 04, 2026</div>
+
+                <p>Your privacy is our absolute priority. This Privacy Policy describes how readHD handles your information.</p>
+
+                <h3>1. Local-First Data Principle</h3>
+                <p>readHD is built on a strict local-first architecture. This means:</p>
+                <ul>
+                    <li><strong>No Personal Data Harvesting:</strong> We do not collect, capture, store, or transmit your custom nickname, bookmarks, highlighted text segments, ADHD brain dumps, or reading history.</li>
+                    <li><strong>Secure On-Device Storage:</strong> All your reading progress, imported books, notes, and local AI flashcards are saved strictly within the secure application sandbox container on your physical device.</li>
+                </ul>
+
+                <h3>2. Device Resource Permissions</h3>
+                <p>To provide our cognitive reading features, the App requests access to:</p>
+                <ul>
+                    <li><strong>Device Accelerometer:</strong> Used strictly on-device to recognize shake gestures to launch the ADHD Brain Dump interface. No motion sensor data is uploaded or logged.</li>
+                    <li><strong>System Text-to-Speech (TTS):</strong> Dictation features utilize your operating system's native voice synthesizer. All voice conversion occurs locally on-device.</li>
+                </ul>
+
+                <h3>3. Purchases & Anonymous Identifiers</h3>
+                <p>We use RevenueCat to process premium subscriptions. Purchases are authenticated anonymously using a local randomly generated user ID. No real name, email, or billing address is sent to us.</p>
+
+                <h3>4. Data Retention & Deletion</h3>
+                <p>Because all data is stored on-device, we cannot access, retrieve, or restore your data. You can delete all your application data at any time by selecting the "DELETE ACCOUNT & DATA" option in the settings panel or by uninstalling the App.</p>
+
+                <h3>5. Contact Information</h3>
+                <p>For privacy inquiries, please reach out to us at <a href="mailto:privacy@readhd.app" style="color: var(--accent-green); text-decoration: none;">privacy@readhd.app</a>.</p>
+            </section>
+
+            <!-- EULA -->
+            <section id="pane-eula" class="legal-pane" role="tabpanel" aria-labelledby="tab-btn-eula">
+                <h2>End User License Agreement</h2>
+                <div class="last-updated">Last Updated: July 04, 2026</div>
+
+                <p>This End User License Agreement ("Agreement") is a legal agreement between you and readHD.</p>
+
+                <h3>1. License Grant</h3>
+                <p>readHD grants you a personal, non-transferable, non-exclusive, revocable license to install and use the App on compatible devices owned or controlled by you, solely for personal, non-commercial purposes.</p>
+
+                <h3>2. Prohibited Restrictions</h3>
+                <p>You shall not:</p>
+                <ul>
+                    <li>Decompile, reverse engineer, disassemble, or attempt to derive the source code of the App.</li>
+                    <li>Modify, adapt, or create derivative works based on the App.</li>
+                    <li>Distribute, lease, sell, or sublicense the App to any third party.</li>
+                </ul>
+
+                <h3>3. Intellectual Property</h3>
+                <p>The App, including all source code, design systems, layouts, assets, and branding, is and remains the exclusive property of readHD.</p>
+
+                <h3>4. Disclaimer of Warranties</h3>
+                <p>THE APP IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
+
+                <h3>5. Limitation of Liability</h3>
+                <p>IN NO EVENT SHALL READHD BE LIABLE FOR ANY INCIDENTAL, SPECIAL, INDIRECT, OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF DATA, BUSINESS INTERRUPTION, OR ACCIDENT ARISING OUT OF THE USE OF OR INABILITY TO USE THE APP.</p>
+
+                <h3>6. Termination</h3>
+                <p>This Agreement is effective until terminated by you or us. Your rights under this license will terminate automatically if you fail to comply with any of its terms. Upon termination, you must cease all use of the App and delete all copies.</p>
+            </section>
+
+            <!-- Account Deletion -->
+            <section id="pane-deletion" class="legal-pane pane-deletion" role="tabpanel" aria-labelledby="tab-btn-deletion">
+                <h2>Account & Data Deletion</h2>
+                <div class="last-updated">Last Updated: July 04, 2026</div>
+
+                <div class="warning-banner">
+                    <div class="warning-icon">⚠</div>
+                    <div class="warning-text">
+                        <h4>Critical Warning</h4>
+                        <p>This action is immediate and completely irreversible. All local data will be permanently lost.</p>
+                    </div>
+                </div>
+
+                <p>Because readHD is a **local-first** application, we do not host your accounts or reading records on our servers. As a result, you do not need to contact us or wait for server-side processing to delete your data.</p>
+
+                <h3>Option 1: In-App Purge (Recommended)</h3>
+                <p>You can instantly delete all your preferences, nickname, highlights, brain dumps, and library books directly inside the App:</p>
+                
+                <div class="deletion-steps">
+                    <ol>
+                        <li>Open the <strong>readHD</strong> App on your mobile device.</li>
+                        <li>Go to the <strong>Settings</strong> panel (accessible from the bottom dashboard tab).</li>
+                        <li>Scroll down to the <strong>Account Management</strong> section.</li>
+                        <li>Tap the red button labeled <strong>Delete Account & Data</strong>.</li>
+                        <li>Confirm the action in the prompt. All database slices and book files will be instantly wiped from the device sandbox.</li>
+                    </ol>
+                </div>
+
+                <h3>Option 2: Delete by Uninstalling</h3>
+                <p>Alternatively, uninstalling the application from your iOS or Android operating system will instruct the OS to automatically delete the application sandbox container, which contains all highlights, offline brain dumps, and downloaded books.</p>
+
+                <h3>Option 3: Request Support / Manual Deletion</h3>
+                <p>If you have questions regarding data deletion, or if you wish to confirm that no cloud data exists for your anonymous purchase identifier, you may submit a request using the helper form below:</p>
+
+                <div class="request-form">
+                    <div class="form-group">
+                        <label for="input-uid">Anonymous User ID (Optional)</label>
+                        <input type="text" id="input-uid" placeholder="e.g. $RCAnonymousID:..." autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-message">Additional Details / Questions</label>
+                        <textarea id="input-message" placeholder="Describe your request..."></textarea>
+                    </div>
+                    <button class="btn" onclick="submitDeletionRequest()">Generate Deletion Request Email</button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 readHD. All rights reserved. | <a href="mailto:support@readhd.app">support@readhd.app</a></p>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            // Deactivate all tabs
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            });
+
+            // Deactivate all panes
+            document.querySelectorAll('.legal-pane').forEach(pane => {
+                pane.classList.remove('active');
+            });
+
+            // Activate target tab
+            const targetBtn = document.getElementById('tab-btn-' + tabId);
+            if (targetBtn) {
+                targetBtn.classList.add('active');
+                targetBtn.setAttribute('aria-selected', 'true');
+            }
+
+            // Activate target pane
+            const targetPane = document.getElementById('pane-' + tabId);
+            if (targetPane) {
+                targetPane.classList.add('active');
+            }
+        }
+
+        function submitDeletionRequest() {
+            const uid = document.getElementById('input-uid').value.trim();
+            const message = document.getElementById('input-message').value.trim();
+            
+            const recipient = "support@readhd.app";
+            const subject = encodeURIComponent("readHD Account/Data Deletion Request");
+            
+            let bodyText = "Hello readHD Support Team,\n\nI am writing to request guidance/confirmation regarding data deletion for my readHD installation.\n\n";
+            if (uid) {
+                bodyText += "My Anonymous Purchase ID is: " + uid + "\n\n";
+            }
+            if (message) {
+                bodyText += "Details:\n" + message + "\n\n";
+            }
+            bodyText += "Please let me know once this request has been noted.\n\nRegards,\nA readHD User";
+            
+            const body = encodeURIComponent(bodyText);
+            
+            window.location.href = "mailto:" + recipient + "?subject=" + subject + "&body=" + body;
+        }
+    </script>
+</body>
+</html>
