@@ -504,8 +504,8 @@
                     <li><strong>System Text-to-Speech (TTS):</strong> Dictation features utilize your operating system's native voice synthesizer. All voice conversion occurs locally on-device.</li>
                 </ul>
 
-                <h3>3. Purchases & Anonymous Identifiers</h3>
-                <p>We use RevenueCat to process premium subscriptions. Purchases are authenticated anonymously using a local randomly generated user ID. No real name, email, or billing address is sent to us.</p>
+                <h3>3. Purchases & Transactions</h3>
+                <p>We use Apple App Store and Google Play Billing services to process premium subscriptions. Purchases are bound to your Apple ID and Google Play account respectively, and processed natively by the operating system platform store. No real name, email, or billing address is processed or stored directly by the readHD application.</p>
 
                 <h3>4. Data Retention & Deletion</h3>
                 <p>Because all data is stored on-device, we cannot access, retrieve, or restore your data. You can delete all your application data at any time by selecting the "DELETE ACCOUNT & DATA" option in the settings panel or by uninstalling the App.</p>
@@ -577,12 +577,12 @@
                 <p>Alternatively, uninstalling the application from your iOS or Android operating system will instruct the OS to automatically delete the application sandbox container, which contains all highlights, offline brain dumps, and downloaded books.</p>
 
                 <h3>Option 3: Request Support / Manual Deletion</h3>
-                <p>If you have questions regarding data deletion, or if you wish to confirm that no cloud data exists for your anonymous purchase identifier, you may submit a request using the helper form below:</p>
+                <p>If you have questions regarding data deletion, or if you wish to submit a deletion query, you may submit a request using the helper form below:</p>
 
                 <div class="request-form">
                     <div class="form-group">
-                        <label for="input-uid">Anonymous User ID (Optional)</label>
-                        <input type="text" id="input-uid" placeholder="e.g. $RCAnonymousID:..." autocomplete="off">
+                        <label for="input-uid">Nickname or Device Info (Optional)</label>
+                        <input type="text" id="input-uid" placeholder="e.g. Reader / iPhone 15..." autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="input-message">Additional Details / Questions</label>
@@ -627,15 +627,15 @@
         }
 
         function submitDeletionRequest() {
-            const uid = document.getElementById('input-uid').value.trim();
+            const info = document.getElementById('input-uid').value.trim();
             const message = document.getElementById('input-message').value.trim();
             
             const recipient = "support@readhd.app";
             const subject = encodeURIComponent("readHD Account/Data Deletion Request");
             
             let bodyText = "Hello readHD Support Team,\n\nI am writing to request guidance/confirmation regarding data deletion for my readHD installation.\n\n";
-            if (uid) {
-                bodyText += "My Anonymous Purchase ID is: " + uid + "\n\n";
+            if (info) {
+                bodyText += "My Nickname/Device Info is: " + info + "\n\n";
             }
             if (message) {
                 bodyText += "Details:\n" + message + "\n\n";
